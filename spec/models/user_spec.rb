@@ -25,7 +25,9 @@ RSpec.describe User, type: :model do
 
   it 'is invalid without unique email'
 
-  it 'has many tasks'
+  it 'has two tasks' do 
+  	expect(user.tasks.length).to eq(2)
+  end
 
   it 'has a valid factory' do 
   	expect(user).to be_valid
