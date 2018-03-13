@@ -139,4 +139,21 @@ RSpec.describe TasksController, type: :controller do
 			end
 		end
 	end
+
+	describe "DELETE #destroy" do
+		let(:task) { build(:homework) }
+
+		it 'destroys the requested task' do
+			task.save
+			expect {
+				delete :destroy, params: { id: task.to_param }
+			}.to change(Task, :count).by(-1)
+		end
+
+		it 'redirects to the task list' do
+			task.save
+			delete :destroy, params: { id: task.to_param }
+			expect(response).to redirect_to(tasks_path)
+		end
+	end
 end
