@@ -46,6 +46,7 @@ group :development, :test do
   # Automatic testing
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'database_cleaner', '~> 1.5.0'
 end
 
 group :development do
