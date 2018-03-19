@@ -30,3 +30,26 @@ feature 'New Task' do
 		expect(page).to have_content("Learn Rspec")
 	end
 end
+
+
+feature 'Edit Task' do
+  let(:task) { create(:homework)}
+
+  scenario 'User edits task' do
+    visit task_path(task)
+    expect(page).to have_content('complete homework')
+
+    click_link("Edit")
+
+    fill_in 'Name', with: 'Master Rspec'
+    fill_in "Priority", with: 1
+    fill_in "Due date", with: DateTime.now
+    select(task.user.email, from: 'task_user_id')
+    
+    click_button('Update Task')
+
+    expect(current_path).to eq(task_path(task.id))
+    
+    expect(page).to have_content('Master Rspec')
+  end
+end
