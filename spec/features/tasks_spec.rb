@@ -7,7 +7,7 @@ feature "tasks/index"  do
 
 		visit tasks_path
 
-		expect(page).to have_content('complete homework')
+		expect(page).to have_content("complete homework")
 		expect(page).to have_content("reply to Zack's email")
 	end
 end
@@ -18,8 +18,8 @@ feature 'New Task' do
 		visit tasks_path
 
 		expect{
-			clink_link 'New Task'
-			fill_in 'Name', with: 'Learn Rspec'
+			click_link 'New Task'
+			fill_in 'Name', with: "Learn Rspec"
 			fill_in 'Priority', with: 1
 			fill_in 'Due date', with: DateTime.now
 			select(user.email, from: 'task_user_id')
