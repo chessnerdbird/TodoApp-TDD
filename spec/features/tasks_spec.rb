@@ -25,5 +25,7 @@ feature 'New Task' do
 			select(user.email, from: 'task_user_id')
 			click_button('Create Task')
 		}.to change(Task, :count).by(1)
+
+		expect(current_path).to eq(task_path(Task.last.id))
 	end
 end
