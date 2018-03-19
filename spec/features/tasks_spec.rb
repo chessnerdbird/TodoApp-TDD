@@ -27,5 +27,6 @@ feature 'New Task' do
 		}.to change(Task, :count).by(1)
 
 		expect(current_path).to eq(task_path(Task.last.id))
+		expect(page).to have_content("Learn Rspec")
 	end
 end
